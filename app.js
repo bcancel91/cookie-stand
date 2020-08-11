@@ -22,15 +22,40 @@ var myObject1 = {
   minCust: 23,
   maxCust: 65,
   avgCookieSale: 6.3,
-  sales: []
+  salesArr: [],
+  getRandomInteger: function(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  },
+  sales: function() {
+    for (var i = 0; i < hours.length; i++) {
+      this.salesArr.push(
+        Math.ceil(
+          this.getRandomInteger(this.minCust, this.maxCust) * this.avgCookieSale
+        )
+      );
+    }
+  },
+  render: function() {
+    this.sales();
+    var seattle = document.getElementById("seattle");
+    var total = 0;
+
+    for (var i = 0; i < this.salesArr.length; i++) {
+      var liEl = document.createElement("li");
+      liEl.textContent = `${hours[i]}: ${this.salesArr[i]} cookies`;
+      seattle.append(liEl);
+    }
+  }
 };
+
+myObject1.render();
 
 var myObject2 = {
   location: "tokyo",
   minCust: 3,
   maxCust: 24,
   avgCookieSale: 1.2,
-  sales: []
+  salesArr: []
 };
 
 var myObject3 = {
@@ -38,7 +63,7 @@ var myObject3 = {
   minCust: 11,
   maxCust: 38,
   avgCookieSale: 3.7,
-  sales: []
+  salesArr: []
 };
 
 var myObject4 = {
@@ -46,7 +71,7 @@ var myObject4 = {
   minCust: 20,
   maxCust: 38,
   avgCookieSale: 2.3,
-  sales: []
+  salesArr: []
 };
 
 var myObject5 = {
@@ -54,5 +79,5 @@ var myObject5 = {
   minCust: 2,
   maxCust: 16,
   avgCookieSale: 4.6,
-  sales: []
+  salesArr: []
 };
