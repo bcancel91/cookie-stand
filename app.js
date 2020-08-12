@@ -153,6 +153,7 @@ var myObject4 = {
 
 myObject4.render();
 
+
 var myObject5 = {
   location: "lima",
   minCust: 23,
@@ -186,3 +187,6 @@ var myObject5 = {
 };
 
 myObject5.render();
+
+
+
