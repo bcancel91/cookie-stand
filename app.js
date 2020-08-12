@@ -153,10 +153,40 @@ var myObject4 = {
 
 myObject4.render();
 
-// var myObject5 = {
-//   location: "lima",
-//   minCust: 2,
-//   maxCust: 16,
-//   avgCookieSale: 4.6,
-//   salesArr: []
-// };
+
+var myObject5 = {
+  location: "lima",
+  minCust: 23,
+  maxCust: 65,
+  avgCookieSale: 6.3,
+  salesArr: [],
+  getRandomInteger: function(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  },
+  sales: function() {
+    for (var i = 0; i < hours.length; i++) {
+      this.salesArr.push(
+        Math.ceil(
+          this.getRandomInteger(this.minCust, this.maxCust) * this.avgCookieSale
+        )
+      );
+    }
+  },
+  render: function() {
+    this.sales();
+    var lima = document.getElementById("lima");
+    var total = 0;
+
+    for (var i = 0; i < this.salesArr.length; i++) {
+      var liEl = document.createElement("li");
+      liEl.textContent = `${hours[i]}: ${this.salesArr[i]} cookies`;
+      total = total + this.sales[i];
+      lima.append(liEl);
+    }
+  }
+};
+
+myObject5.render();
+
+
+
