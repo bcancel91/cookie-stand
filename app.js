@@ -85,13 +85,39 @@ var myObject2 = {
 
 myObject2.render();
 
-// var myObject3 = {
-//   location: "dubai",
-//   minCust: 11,
-//   maxCust: 38,
-//   avgCookieSale: 3.7,
-//   salesArr: []
-// };
+var myObject3 = {
+  location: "dubai",
+  minCust: 23,
+  maxCust: 65,
+  avgCookieSale: 6.3,
+  salesArr: [],
+  getRandomInteger: function(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  },
+  sales: function() {
+    for (var i = 0; i < hours.length; i++) {
+      this.salesArr.push(
+        Math.ceil(
+          this.getRandomInteger(this.minCust, this.maxCust) * this.avgCookieSale
+        )
+      );
+    }
+  },
+  render: function() {
+    this.sales();
+    var dubai = document.getElementById("dubai");
+    var total = 0;
+
+    for (var i = 0; i < this.salesArr.length; i++) {
+      var liEl = document.createElement("li");
+      liEl.textContent = `${hours[i]}: ${this.salesArr[i]} cookies`;
+      total = total + this.sales[i];
+      dubai.append(liEl);
+    }
+  }
+};
+
+myObject3.render();
 
 // var myObject4 = {
 //   location: "paris",
